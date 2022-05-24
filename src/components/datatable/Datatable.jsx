@@ -86,7 +86,7 @@ console.log(type)
     <div className="datatable">
       <div className="datatableTitle">
         {type === "users" ? "ADD NEW USER" : "ADD NEW PRODUCT"}
-        <Link to="/users/new" className="link">
+        <Link to={`/${type}/new`} className="link">
           Add New
         </Link>
       </div>

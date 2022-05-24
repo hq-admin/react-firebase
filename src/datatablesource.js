@@ -1,14 +1,13 @@
 export const userColumns = [
-  { field: "id", headerName: "ID", width: 230 },
   {
     field: "user",
-    headerName: "User",
+    headerName: "Name",
     width: 230,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
-          {params.row.username}
+          {/* <img className="cellImg" src={params.row.img} alt="avatar" /> */}
+          {params.row.firstName} {params.row.lastName}
         </div>
       );
     },
@@ -18,6 +17,11 @@ export const userColumns = [
     headerName: "Email",
     width: 230,
   },
+  {
+    field: "phone",
+    headerName: "Phone",
+    width: 230,
+  },
 
   {
     field: "address",
@@ -25,17 +29,27 @@ export const userColumns = [
     width: 150,
   },
   {
-    field: "status",
-    headerName: "Status",
-    width: 160,
-    renderCell: (params) => {
-      return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
-        </div>
-      );
-    },
+  field: "city",
+  headerName: "City",
+  width: 150,
   },
+  {
+  field: "province",
+  headerName: "Province",
+  width: 150,
+  },
+  // {
+  //   field: "status",
+  //   headerName: "Status",
+  //   width: 160,
+  //   renderCell: (params) => {
+  //     return (
+  //       <div className={`cellWithStatus ${params.row.status}`}>
+  //         {params.row.status}
+  //       </div>
+  //     );
+  //   },
+  // },
 ];
 
 export const productColumns = [

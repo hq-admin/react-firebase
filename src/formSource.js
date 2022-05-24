@@ -1,22 +1,23 @@
 export const userInputs = [
+  {
+    id: "email",
+    label: "Email",
+    type: "mail",
+    placeholder: "john_doe@gmail.com",
+  },
     {
-      id: "username",
-      label: "Username",
+      id: "firstName",
+      label: "First Name",
       type: "text",
-      placeholder: "john_doe",
+      placeholder: "John",
     },
     {
-      id: "displayName",
-      label: "Name and surname",
+      id: "lastName",
+      label: "Last Name",
       type: "text",
-      placeholder: "John Doe",
+      placeholder: "Doe",
     },
-    {
-      id: "email",
-      label: "Email",
-      type: "mail",
-      placeholder: "john_doe@gmail.com",
-    },
+
     {
       id: "phone",
       label: "Phone",
@@ -32,46 +33,64 @@ export const userInputs = [
       id: "address",
       label: "Address",
       type: "text",
-      placeholder: "Elton St. 216 NewYork",
+      placeholder: "26 John St",
+    },
+    {
+      id: "city",
+      label: "City",
+      type: "text",
+      placeholder: "Kitchener",
+    },
+    {
+      id: "province",
+      label: "Province",
+      type: "text",
+      placeholder: "ON",
     },
     {
       id: "country",
       label: "Country",
       type: "text",
-      placeholder: "USA",
+      placeholder: "Canada",
     },
   ];
   
   export const productInputs = [
     {
-      id: 1,
-      label: "Title",
+      id: "sku",
+      label: "SKU",
+      type: "text",
+      placeholder: "BG-IP8-BK",
+    },
+    {
+      id: "name",
+      label: "Name",
       type: "text",
       placeholder: "Apple Macbook Pro",
     },
     {
-      id: 2,
+      id: "description",
       label: "Description",
       type: "text",
       placeholder: "Description",
     },
     {
-      id: 3,
-      label: "Category",
-      type: "text",
-      placeholder: "Computers",
+      id: "cost",
+      label: "Cost",
+      type: "number",
+      placeholder: "Cost",
     },
     {
-      id: 4,
+      id: "price",
       label: "Price",
-      type: "text",
+      type: "number",
       placeholder: "100",
     },
     {
-      id: 5,
+      id: "stock",
       label: "Stock",
-      type: "text",
-      placeholder: "in stock",
+      type: "number",
+      placeholder: "1",
     },
   ];
   

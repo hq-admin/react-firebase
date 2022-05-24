@@ -1,4 +1,4 @@
-import "./new.scss";
+import "./update.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
@@ -7,6 +7,7 @@ import {
   addDoc,
   collection,
   doc,
+  getDoc,
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
@@ -15,20 +16,33 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const New = ({ inputs, title }) => {
+const Update = ({ inputs, title }) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
   const [per, setPerc] = useState(null);
   const navigate = useNavigate()
   const location = useLocation()
   const type = location.pathname.split('/')[1];
-  console.log(type)
+  const id = location.pathname.split('/')[3]
+//console.log("type "+ type+"id "+id)
+
+  useEffect(()=> {
+    const fetchData = async() => {
+      try{
+        const res = await getDoc(doc(db, type, id))
+        setData(res.data())
+        console.log(res.data())
+      }catch(err) {
+        console.log(err)
+      }
+    }
+    fetchData()
+  }, [])
 
   useEffect(() => {
     const uploadFile = () => {
       const name = new Date().getTime() + file.name;
 
-      console.log(name);
       const storageRef = ref(storage, file.name);
       const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -63,13 +77,13 @@ const New = ({ inputs, title }) => {
     file && uploadFile();
   }, [file]);
 
-  console.log(data);
 
   const handleInput = (e) => {
     const id = e.target.id;
     const value = e.target.value;
 
     setData({ ...data, [id]: value });
+    console.log(data)
   };
 
   const handleAdd = async (e) => {
@@ -91,7 +105,7 @@ const New = ({ inputs, title }) => {
       }
     } else {
       try {
-        await addDoc(collection(db, type), {
+        await setDoc(doc(db, type, id), {
           ...data,
           timeStamp: serverTimestamp(),
         });
@@ -118,7 +132,7 @@ const New = ({ inputs, title }) => {
               src={
                 file
                   ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                  : data.img
               }
               alt=""
             />
@@ -144,6 +158,7 @@ const New = ({ inputs, title }) => {
                     id={input.id}
                     type={input.type}
                     placeholder={input.placeholder}
+                    value={data[input.id]}
                     onChange={handleInput}
                   />
                 </div>
@@ -159,4 +174,4 @@ const New = ({ inputs, title }) => {
   );
 };
 
-export default New;
+export default Update;

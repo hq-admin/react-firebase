@@ -9,6 +9,7 @@ import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
+import Update from "./pages/update/Update";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -58,6 +59,14 @@ function App() {
                   </RequireAuth>
                 }
               />
+              <Route
+              path="update"
+              element={
+                <RequireAuth>
+                  <Update inputs={userInputs} title="Update User" />
+                </RequireAuth>
+              }
+            />
             </Route>
             <Route path="products">
               <Route
@@ -84,6 +93,14 @@ function App() {
                   </RequireAuth>
                 }
               />
+              <Route
+              path="update/:productId"
+              element={
+                <RequireAuth>
+                <Update inputs={productInputs} title="Update Product" />
+                </RequireAuth>
+              }
+            />
             </Route>
           </Route>
         </Routes>
@@ -93,3 +110,12 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+

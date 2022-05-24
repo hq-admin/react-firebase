@@ -53,7 +53,6 @@ export const userColumns = [
 ];
 
 export const productColumns = [
-  { field: "id", headerName: "ID", width: 230 },
   {
     field: "product",
     headerName: "Product",

@@ -14,7 +14,6 @@ import { db } from "../../firebase";
 
 const Datatable = ({type}) => {
   const [data, setData] = useState([]);
-console.log(type)
   useEffect(() => {
     // const fetchData = async () => {
     //   let list = [];

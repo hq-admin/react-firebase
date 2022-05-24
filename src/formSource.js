@@ -92,5 +92,11 @@ export const userInputs = [
       type: "number",
       placeholder: "1",
     },
+    {
+      id: "category",
+      label: "Category",
+      type: "text",
+      placeholder: "iPhone",
+    }
   ];
   
